@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Function to send POST request and handle response
   const getBotResponse = async (question: string) => {
     const apiUrl =
-      "https://portfolio-chatbot-production-5108.up.railway.app/recommendation";
+      "https://portfolio-chatbot-q6cb.onrender.com/recommendation";
 
     try {
       // Add a "bot is typing" message
