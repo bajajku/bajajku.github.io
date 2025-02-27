@@ -215,7 +215,7 @@ function animate() {
   
   // Animate prisms (floating and rotating) - more subtle, professional movement
   prisms.forEach(prism => {
-    const { floatSpeed, rotationSpeed, floatOffset, originalY } = prism.userData;
+    const {rotationSpeed, floatOffset, originalY } = prism.userData;
     
     // Make prisms float up and down with more subtle movement
     prism.position.y = originalY + Math.sin(time * 2 + floatOffset) * 1.5;
