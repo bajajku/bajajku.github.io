@@ -6,10 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kunal Bajaj - Portfolio</title>
   <link rel="stylesheet" href="src/index.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <!-- Canvas Background -->
   <canvas id="bg"></canvas>
 
   <!-- Navigation Bar -->
@@ -32,7 +34,7 @@
     <!-- Header Section -->
     <header id="home" class="hero">
       <div class="hero-content">
-        <h1>Hi I'm Kunal Bajaj</h1>
+        <h1 data-text="Hi I'm Kunal Bajaj">Hi I'm Kunal Bajaj</h1>
         <p class="subtitle">🚀 "Crafting innovative tech solutions with creativity, precision, and passion."</p>
       </div>
     </header>
@@ -59,6 +61,26 @@
     <h2>💼 Work Experience</h2>
     <div class="experience-container">
       <!-- Card 1 -->
+      <div class="experience-card">
+        <h3>Software Developer</h3>
+        <p>Korah Limited</p>
+        <p class="location">Remote</p>
+        <p class="date-range">January 2025 - Present</p>
+        <ul>
+          <li>Continuing development of FindMyBed🏥 Project, focusing on feature enhancement, performance optimization, and user experience improvements.</li>
+          <li>Utilizing algorithms like Grid search for hyperparameter tuning.</li>
+        </ul>
+        <div class="tech-stack">
+          <span>Python</span>
+          <span>FastAPI</span>
+          <span>Pytest</span>
+          <span>Scipy</span>
+          <span>Matplotlib</span>
+          <span>Pandas</span>
+          <span>NumPy</span>
+        </div>
+      </div>
+
       <div class="experience-card">
         <h3>AI and Process Optimization Analyst</h3>
         <p>Korah Limited</p>
@@ -291,14 +313,15 @@
       <a href="https://learner.mycreds.ca/sharelink/1c6774c2-a61f-4f80-80ee-a6771c750d34/be4e19ab-9124-4248-bebc-8a9777dd6ead"
         class="card-link" style="text-decoration: none; position: relative;">
         <ul class="experience-card">
-          <span class="link-indicator">🔗</span> <!-- Link indicator added -->
-          <p>🏅 Awarded Sheridan's Generator Student Award for Innovation in Research</p>
+          <span class="link-indicator">🔗</span>
+          <p>Awarded Sheridan's Generator Student Award for Innovation in Research</p>
         </ul>
+      </a>
     </section>
   </main>
 
   <!-- Footer Section -->
-<footer id = "contact" class="footer">
+<footer id="contact" class="footer">
   <div class="footer-content">
     <p>To contact me follow these links :) </p>
     <ul class="social-links">
