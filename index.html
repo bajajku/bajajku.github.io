@@ -107,16 +107,74 @@
       <div class="chatbot-container">
         <div id="chatbot-popup">
           <div id="chat-header">
-            <h4 class="chat-header-text">Hi, I'm Kunal's Portfolio Assistant!</h4>
+            <div class="ai-avatar">
+              <div class="ai-face"></div>
+              <div class="ai-rings">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+            <div class="header-content">
+              <h4 class="chat-header-text">AI Portfolio Navigator</h4>
+              <div class="neural-activity">
+                <span></span><span></span><span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+            <div class="system-indicators">
+              <div class="indicator" title="AI Status">
+                <div class="pulse"></div>
+                <span>ACTIVE</span>
+              </div>
+            </div>
+          </div>
+          <div class="interface-status-bar">
+            <div class="module-indicator">CORE MODULE ACTIVE</div>
+            <div class="analytics-bar">
+              <span class="analytics-dot"></span>
+              <span class="analytics-dot"></span>
+              <span class="analytics-dot"></span>
+            </div>
+            <div class="runtime-metrics">SYS.28.44.X</div>
           </div>
           <div id="chat-body">
             <div class="chat-message bot">
-              <p class="chat-color">Welcome! I'm here to help you explore Kunal's skills, experience, and projects. Feel free to ask me about his work or anything you're curious about!</p>
+              <div class="message-connector"></div>
+              <div class="message-content">
+                <div class="message-header">
+                  <span class="agent-name">PORTFOLIO-AI</span>
+                  <span class="timestamp">NOW</span>
+                </div>
+                <p class="chat-color">Hello! I'm Kunal's advanced AI assistant. My neural systems are optimized to help you explore his skills, experience, and projects with 98.7% accuracy. What aspect of Kunal's portfolio would you like me to analyze?</p>
+                <div class="message-footer">
+                  <div class="confidence-indicator">
+                    <span class="confidence-label">CONFIDENCE:</span>
+                    <div class="confidence-bar high"></div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div id="chat-footer">
-            <input type="text" id="chat-input" placeholder="Type your question..." />
-            <button id="chat-send" aria-label="Send Message">➤</button>
+            <div class="input-wrapper">
+              <div class="input-prefix">>_</div>
+              <input type="text" id="chat-input" placeholder="Enter query parameters..." />
+            </div>
+            <button id="chat-send" aria-label="Process Query">
+              <div class="send-icon-wrapper">
+                <div class="send-icon-circle"></div>
+                <div class="send-icon-arrow"></div>
+              </div>
+            </button>
+          </div>
+          <div class="system-footer">
+            <div class="sys-metrics">
+              <span>AI ENGINE v3.7</span>
+              <span class="separator">|</span>
+              <span class="metric-item">MEM: OPTIMAL</span>
+              <span class="separator">|</span>
+              <span class="metric-item blink">LEARNING ACTIVE</span>
+            </div>
           </div>
         </div>
       </div>

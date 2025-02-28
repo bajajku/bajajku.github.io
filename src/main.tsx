@@ -458,14 +458,34 @@ document.addEventListener("DOMContentLoaded", () => {
     const apiUrl = "https://portfolio-chatbot-q6cb.onrender.com/recommendation";
 
     try {
-      // Add a "bot is typing" message
-      const typingMessage = document.createElement("div");
-      typingMessage.classList.add("chat-message", "bot");
-      typingMessage.innerHTML = `<p class="thinking-effect">Thinking...</p>`;
-      chatBody.appendChild(typingMessage);
+      // Create thinking message with advanced animation
+      const thinkingMessage = document.createElement("div");
+      thinkingMessage.classList.add("chat-message", "bot");
+      thinkingMessage.innerHTML = `
+        <div class="message-connector"></div>
+        <div class="message-content">
+          <div class="message-header">
+            <span class="agent-name">PORTFOLIO-AI</span>
+            <span class="timestamp">PROCESSING</span>
+          </div>
+          <p class="thinking-anim">
+            <span>Analyzing query</span>
+            <span class="thinking-dots">
+              <span></span><span></span><span></span>
+            </span>
+          </p>
+          <div class="message-footer">
+            <div class="confidence-indicator">
+              <span class="confidence-label">ANALYSIS:</span>
+              <div class="confidence-bar medium"></div>
+            </div>
+          </div>
+        </div>
+      `;
+      chatBody.appendChild(thinkingMessage);
       chatBody.scrollTop = chatBody.scrollHeight;
 
-      // Send POST request to the API
+      // Send request to API
       const response = await fetch(apiUrl, {
         method: "POST",
         headers: {
@@ -474,26 +494,71 @@ document.addEventListener("DOMContentLoaded", () => {
         body: JSON.stringify({ question }),
       });
 
-      // Check if the response is okay
       if (!response.ok) {
-        throw new Error("Something went wrong. Please try again later.");
+        throw new Error("Network response was not ok");
       }
 
-      // Wait for the full response
       const data = await response.json();
-
-      // Remove the "bot is typing" message
-      typingMessage.remove();
-
-      // Display the bot's response
-      addMessage(data.result || "Sorry, I couldn't understand that.");
+      
+      // Remove thinking message
+      thinkingMessage.remove();
+      
+      // Format timestamp
+      const now = new Date();
+      const timestamp = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      
+      // Add bot response with advanced styling
+      const botMessage = document.createElement("div");
+      botMessage.classList.add("chat-message", "bot");
+      botMessage.innerHTML = `
+        <div class="message-connector"></div>
+        <div class="message-content">
+          <div class="message-header">
+            <span class="agent-name">PORTFOLIO-AI</span>
+            <span class="timestamp">${timestamp}</span>
+          </div>
+          <p class="chat-color">${data.result || "Analysis incomplete. Please rephrase your query."}</p>
+          <div class="message-footer">
+            <div class="confidence-indicator">
+              <span class="confidence-label">CONFIDENCE:</span>
+              <div class="confidence-bar high"></div>
+            </div>
+          </div>
+        </div>
+      `;
+      
+      chatBody.appendChild(botMessage);
+      chatBody.scrollTop = chatBody.scrollHeight;
+      
     } catch (error) {
       console.error("Error:", error);
-
-      // Remove the "bot is typing" message and show error
-      const typingMessage = document.querySelector(".chat-message.bot:last-child");
-      if (typingMessage) typingMessage.remove();
-      addMessage("Unable to connect to the server. Please try again later.");
+      
+      // Remove the thinking message if it exists
+      const thinkingMsg = document.querySelector(".chat-message.bot:last-child");
+      if (thinkingMsg) thinkingMsg.remove();
+      
+      // Add error message
+      const errorMessage = document.createElement("div");
+      errorMessage.classList.add("chat-message", "bot");
+      errorMessage.innerHTML = `
+        <div class="message-connector"></div>
+        <div class="message-content">
+          <div class="message-header">
+            <span class="agent-name">SYSTEM</span>
+            <span class="timestamp">ERROR</span>
+          </div>
+          <p class="chat-color">Neural connection interrupted. Unable to process request. Please try again.</p>
+          <div class="message-footer">
+            <div class="confidence-indicator">
+              <span class="confidence-label">STATUS:</span>
+              <div class="confidence-bar low"></div>
+            </div>
+          </div>
+        </div>
+      `;
+      
+      chatBody.appendChild(errorMessage);
+      chatBody.scrollTop = chatBody.scrollHeight;
     }
   };
 
