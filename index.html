@@ -9,6 +9,36 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .chat-header-text {
+      color: var(--text-color, #ffffff);
+      text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+      font-weight: 600;
+    }
+    
+    .dark-theme .chat-header-text,
+    .cyberpunk-theme .chat-header-text {
+      color: #ffffff;
+    }
+    
+    .light-theme .chat-header-text {
+      color: #333333;
+      text-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
+    }
+    
+    .ocean-theme .chat-header-text {
+      color: #ffffff;
+    }
+    
+    .forest-theme .chat-header-text {
+      color: #ffffff;
+    }
+    
+    .soft-pink-theme .chat-header-text {
+      color: #333333;
+      text-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
+    }
+  </style>
 </head>
 
 <body>
@@ -77,7 +107,7 @@
       <div class="chatbot-container">
         <div id="chatbot-popup">
           <div id="chat-header">
-            <h4>Hi, I'm Kunal's Portfolio Assistant!</h4>
+            <h4 class="chat-header-text">Hi, I'm Kunal's Portfolio Assistant!</h4>
           </div>
           <div id="chat-body">
             <div class="chat-message bot">
