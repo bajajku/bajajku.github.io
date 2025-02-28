@@ -3,18 +3,142 @@
 
 /* General Settings */
 :root {
+  /* Default Dark Theme */
   --dark-bg: #0b0b0b;
   --primary-color: #00ffff;
-  --secondary-color: #ffffff;
+  --secondary-color: #f0f0f0;
   --accent-color: #ff8c00;
   --glow-color: rgba(0, 255, 255, 0.6);
   --heading-font: 'Orbitron', sans-serif;
   --body-font: 'Rajdhani', sans-serif;
+  --card-bg: linear-gradient(135deg, rgba(30, 30, 46, 0.9), rgba(58, 58, 85, 0.9));
+  --section-bg: linear-gradient(135deg, rgba(15, 15, 20, 0.95), rgba(25, 25, 35, 0.95));
+  --nav-bg: rgba(15, 15, 15, 0.8);
+  --scrollbar-track: #0f0f1a;
+  --chat-header-bg: linear-gradient(90deg, var(--primary-color), #00ccff);
+  --chat-body-bg: rgba(46, 46, 77, 0.9);
+  --chat-footer-bg: rgba(30, 30, 50, 0.9);
+  --chat-bot-message-bg: linear-gradient(135deg, var(--primary-color), #00ccff);
+  --chat-user-message-bg: linear-gradient(135deg, #4a4a75, #3a3a55);
+  --chat-bot-text: #1e1e2e;
+  --chat-user-text: #fff;
+  --footer-bg: linear-gradient(0deg, #1a1a2e, #232342);
+  --theme-name: "Dark";
 
   font-family: var(--body-font);
   font-weight: 400;
   font-style: normal;
   scroll-behavior: smooth;
+}
+
+/* Light Theme */
+body.light-theme {
+  --dark-bg: #f5f5f7;
+  --primary-color: #0066cc;
+  --secondary-color: #444444;
+  --accent-color: #ff6b00;
+  --glow-color: rgba(0, 102, 204, 0.4);
+  --card-bg: linear-gradient(135deg, rgba(235, 235, 245, 0.9), rgba(215, 215, 225, 0.9));
+  --section-bg: linear-gradient(135deg, rgba(240, 240, 245, 0.95), rgba(230, 230, 235, 0.95));
+  --nav-bg: rgba(245, 245, 247, 0.8);
+  --scrollbar-track: #e0e0e5;
+  --chat-header-bg: linear-gradient(90deg, var(--primary-color), #3399ff);
+  --chat-body-bg: rgba(225, 225, 235, 0.9);
+  --chat-footer-bg: rgba(215, 215, 225, 0.9);
+  --chat-bot-message-bg: linear-gradient(135deg, var(--primary-color), #3399ff);
+  --chat-user-message-bg: linear-gradient(135deg, #c5c5d5, #d5d5e5);
+  --chat-bot-text: #ffffff;
+  --chat-user-text: #333333;
+  --footer-bg: linear-gradient(0deg, #e5e5e7, #d5d5d7);
+  --theme-name: "Light";
+}
+
+/* Cyberpunk Theme */
+body.cyberpunk-theme {
+  --dark-bg: #0a0a16;
+  --primary-color: #ff00ff;
+  --secondary-color: #e0f0e0;
+  --accent-color: #ffff00;
+  --glow-color: rgba(255, 0, 255, 0.7);
+  --card-bg: linear-gradient(135deg, rgba(30, 0, 50, 0.9), rgba(60, 0, 90, 0.9));
+  --section-bg: linear-gradient(135deg, rgba(15, 10, 30, 0.95), rgba(25, 5, 45, 0.95));
+  --nav-bg: rgba(10, 0, 20, 0.8);
+  --scrollbar-track: #120a20;
+  --chat-header-bg: linear-gradient(90deg, #ff00ff, #aa00ff);
+  --chat-body-bg: rgba(30, 0, 60, 0.9);
+  --chat-footer-bg: rgba(20, 0, 40, 0.9);
+  --chat-bot-message-bg: linear-gradient(135deg, #ff00ff, #aa00ff);
+  --chat-user-message-bg: linear-gradient(135deg, #4d0082, #8a2be2);
+  --chat-bot-text: #ffffff;
+  --chat-user-text: #00ff99;
+  --footer-bg: linear-gradient(0deg, #1a0033, #330066);
+  --theme-name: "Cyberpunk";
+}
+
+/* Ocean Theme */
+body.ocean-theme {
+  --dark-bg: #001e3c;
+  --primary-color: #00bfff;
+  --secondary-color: #e0f7fa;
+  --accent-color: #ff8000;
+  --glow-color: rgba(0, 191, 255, 0.5);
+  --card-bg: linear-gradient(135deg, rgba(0, 50, 100, 0.9), rgba(0, 75, 130, 0.9));
+  --section-bg: linear-gradient(135deg, rgba(0, 35, 75, 0.95), rgba(0, 55, 95, 0.95));
+  --nav-bg: rgba(0, 20, 40, 0.8);
+  --scrollbar-track: #002f4c;
+  --chat-header-bg: linear-gradient(90deg, #00bfff, #007bb8);
+  --chat-body-bg: rgba(0, 60, 120, 0.9);
+  --chat-footer-bg: rgba(0, 40, 90, 0.9);
+  --chat-bot-message-bg: linear-gradient(135deg, #00bfff, #007bb8);
+  --chat-user-message-bg: linear-gradient(135deg, #004d7a, #006699);
+  --chat-bot-text: #ffffff;
+  --chat-user-text: #e0f7fa;
+  --footer-bg: linear-gradient(0deg, #001529, #002a4c);
+  --theme-name: "Ocean";
+}
+
+/* Forest Theme */
+body.forest-theme {
+  --dark-bg: #0a1f0a;
+  --primary-color: #4caf50;
+  --secondary-color: #f1f8e9;
+  --accent-color: #ff6d00;
+  --glow-color: rgba(76, 175, 80, 0.5);
+  --card-bg: linear-gradient(135deg, rgba(30, 60, 30, 0.9), rgba(45, 80, 45, 0.9));
+  --section-bg: linear-gradient(135deg, rgba(20, 40, 20, 0.95), rgba(35, 65, 35, 0.95));
+  --nav-bg: rgba(15, 35, 15, 0.8);
+  --scrollbar-track: #162c16;
+  --chat-header-bg: linear-gradient(90deg, #4caf50, #2e7d32);
+  --chat-body-bg: rgba(40, 75, 40, 0.9);
+  --chat-footer-bg: rgba(30, 60, 30, 0.9);
+  --chat-bot-message-bg: linear-gradient(135deg, #4caf50, #2e7d32);
+  --chat-user-message-bg: linear-gradient(135deg, #33691e, #558b2f);
+  --chat-bot-text: #ffffff;
+  --chat-user-text: #f1f8e9;
+  --footer-bg: linear-gradient(0deg, #1b2e1b, #2d462d);
+  --theme-name: "Forest";
+}
+
+/* Soft Pink Theme */
+body.soft-pink-theme {
+  --dark-bg: #fff0f5;
+  --primary-color: #ff69b4;
+  --secondary-color: #4a3446;
+  --accent-color: #ffd700;
+  --glow-color: rgba(255, 105, 180, 0.5);
+  --card-bg: linear-gradient(135deg, rgba(255, 240, 245, 0.9), rgba(255, 228, 225, 0.9));
+  --section-bg: linear-gradient(135deg, rgba(253, 233, 242, 0.95), rgba(255, 222, 233, 0.95));
+  --nav-bg: rgba(255, 240, 245, 0.8);
+  --scrollbar-track: #ffebf1;
+  --chat-header-bg: linear-gradient(90deg, #ff69b4, #db7093);
+  --chat-body-bg: rgba(255, 228, 238, 0.9);
+  --chat-footer-bg: rgba(255, 218, 228, 0.9);
+  --chat-bot-message-bg: linear-gradient(135deg, #ff69b4, #db7093);
+  --chat-user-message-bg: linear-gradient(135deg, #f8bbd0, #f48fb1);
+  --chat-bot-text: #ffffff;
+  --chat-user-text: #4a3446;
+  --footer-bg: linear-gradient(0deg, #ffdae5, #ffe4e8);
+  --theme-name: "Soft Pink";
 }
 
 body {
@@ -39,7 +163,7 @@ canvas {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0f0f1a;
+  background: var(--scrollbar-track);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -56,7 +180,7 @@ nav {
   position: sticky;
   top: 0;
   width: 100%;
-  background: rgba(15, 15, 15, 0.8);
+  background: var(--nav-bg);
   backdrop-filter: blur(12px);
   z-index: 1000;
   padding: 1rem 0;
@@ -212,7 +336,7 @@ section {
   margin: 6rem auto;
   padding: 3rem;
   max-width: 1200px;
-  background: linear-gradient(135deg, rgba(15, 15, 20, 0.95), rgba(25, 25, 35, 0.95));
+  background: var(--section-bg);
   border-radius: 16px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
   position: relative;
@@ -283,7 +407,7 @@ section li {
 
 .experience-card {
   flex: 1 1 calc(33.333% - 2rem);
-  background: linear-gradient(135deg, rgba(30, 30, 46, 0.9), rgba(58, 58, 85, 0.9));
+  background: var(--card-bg);
   border: 1px solid rgba(0, 255, 255, 0.1);
   border-radius: 16px;
   padding: 2rem;
@@ -352,7 +476,7 @@ section li {
 
 .location {
   font-size: 1rem;
-  color: #ddd;
+  color: var(--accent-color);
   margin-bottom: 0.5rem;
   display: flex;
   align-items: center;
@@ -365,7 +489,7 @@ section li {
 
 .date-range {
   font-size: 0.95rem;
-  color: #aaa;
+  color: var(--accent-color);
   margin-bottom: 1rem;
   display: flex;
   align-items: center;
@@ -405,8 +529,8 @@ section li {
 }
 
 .tech-stack span {
-  background: linear-gradient(135deg, var(--primary-color), #00ccff);
-  color: #1a1a2e;
+  background: var(--primary-color);
+  color: var(--dark-bg);
   font-weight: 600;
   font-size: 0.85rem;
   border-radius: 20px;
@@ -416,7 +540,7 @@ section li {
 }
 
 .tech-stack span:hover {
-  background: linear-gradient(135deg, var(--accent-color), #ff6a00);
+  background: var(--accent-color);
   color: #fff;
   transform: scale(1.1) rotate(3deg);
   box-shadow: 0 4px 8px rgba(255, 140, 0, 0.5);
@@ -481,8 +605,8 @@ section li {
 }
 
 #chat-header {
-  background: linear-gradient(90deg, var(--primary-color), #00ccff);
-  color: #121220;
+  background: var(--chat-header-bg);
+  color: var(--chat-bot-text);
   padding: 1.2rem;
   border-radius: 20px 20px 0 0;
   font-weight: bold;
@@ -512,7 +636,7 @@ section li {
   max-height: 250px;
   overflow-y: auto;
   padding: 1.5rem;
-  background: rgba(46, 46, 77, 0.9);
+  background: var(--chat-body-bg);
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -531,8 +655,8 @@ section li {
 }
 
 .chat-message.bot {
-  background: linear-gradient(135deg, var(--primary-color), #00ccff);
-  color: #1e1e2e;
+  background: var(--chat-bot-message-bg);
+  color: var(--chat-bot-text);
   padding: 1rem;
   border-radius: 0 15px 15px 15px;
   text-align: left;
@@ -548,8 +672,8 @@ section li {
 }
 
 .chat-message.user {
-  background: linear-gradient(135deg, #4a4a75, #3a3a55);
-  color: #fff;
+  background: var(--chat-user-message-bg);
+  color: var(--chat-user-text);
   padding: 1rem;
   border-radius: 15px 0 15px 15px;
   align-self: flex-end;
@@ -569,7 +693,7 @@ section li {
   display: flex;
   gap: 0.5rem;
   padding: 1rem;
-  background: rgba(30, 30, 50, 0.9);
+  background: var(--chat-footer-bg);
   border-radius: 0 0 20px 20px;
   border-top: 1px solid rgba(0, 255, 255, 0.1);
 }
@@ -622,7 +746,7 @@ section li {
 
 /* Enhanced Footer */
 .footer {
-  background: linear-gradient(0deg, #1a1a2e, #232342);
+  background: var(--footer-bg);
   color: #fff;
   padding: 3rem 1rem;
   text-align: center;
@@ -699,7 +823,7 @@ section li {
 
 .footer p {
   margin-top: 2rem;
-  color: #ddd;
+  color: var(--secondary-color);
   font-size: 1rem;
   letter-spacing: 1px;
 }
@@ -794,5 +918,224 @@ section li {
     width: 45px;
     height: 45px;
   }
+}
+
+/* Theme Toggle Button Styles */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1001;
+  background: var(--primary-color);
+  box-shadow: 0 0 10px var(--glow-color);
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1) rotate(15deg);
+}
+
+.theme-toggle svg {
+  width: 24px;
+  height: 24px;
+  fill: var(--dark-bg);
+}
+
+/* Theme Selector Styles */
+.theme-switcher {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1001;
+}
+
+.theme-button {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: var(--primary-color);
+  box-shadow: 0 0 10px var(--glow-color);
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.theme-button:hover {
+  transform: scale(1.1);
+}
+
+.theme-button svg {
+  width: 24px;
+  height: 24px;
+  fill: var(--dark-bg);
+}
+
+.theme-panel {
+  position: absolute;
+  top: 55px;
+  right: 0;
+  width: 180px;
+  padding: 15px;
+  border-radius: 10px;
+  background: var(--card-bg);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1002;
+}
+
+.theme-panel.active {
+  display: flex;
+}
+
+.theme-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.theme-option:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.theme-color {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.theme-option.active {
+  background: rgba(var(--primary-color-rgb), 0.2);
+  font-weight: bold;
+}
+
+.dark-theme-color {
+  background: linear-gradient(135deg, #00ffff, #0b0b0b);
+}
+
+.light-theme-color {
+  background: linear-gradient(135deg, #0066cc, #f5f5f7);
+}
+
+.cyberpunk-theme-color {
+  background: linear-gradient(135deg, #ff00ff, #0a0a16);
+}
+
+.ocean-theme-color {
+  background: linear-gradient(135deg, #00bfff, #001e3c);
+}
+
+.forest-theme-color {
+  background: linear-gradient(135deg, #4caf50, #0a1f0a);
+}
+
+.soft-pink-theme-color {
+  background: linear-gradient(135deg, #ff69b4, #fff0f5);
+}
+
+/* Base text styling - applying theme colors to text elements */
+body {
+  color: var(--secondary-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--primary-color);
+  font-family: var(--heading-font);
+}
+
+p {
+  color: var(--secondary-color);
+}
+
+a {
+  color: var(--primary-color);
+  transition: color 0.3s ease;
+}
+
+a:hover, a:focus {
+  color: var(--accent-color);
+}
+
+/* Navigation links */
+nav a {
+  color: var(--secondary-color);
+}
+
+nav a:hover, nav a:focus {
+  color: var(--primary-color);
+}
+
+/* Card text */
+.experience-card h3 {
+  color: var(--primary-color);
+}
+
+.experience-card p, .experience-card li {
+  color: var(--secondary-color);
+}
+
+.date-range, .location {
+  color: var(--accent-color);
+}
+
+/* Tech stack tags */
+.tech-stack span {
+  color: var(--dark-bg);
+  background: var(--primary-color);
+}
+
+/* Footer text */
+.footer p {
+  color: var(--secondary-color);
+}
+
+/* Chatbot text colors are already handled by theme variables */
+
+/* Update theme colors for better text contrast in all themes */
+
+/* Light Theme - adjusted for better text contrast */
+body.light-theme {
+  --secondary-color: #444444; /* Darker text for better contrast */
+}
+
+/* Dark Theme - adjusted for better text contrast */
+:root {
+  --secondary-color: #f0f0f0; /* Lighter text for better contrast */
+}
+
+/* Cyberpunk Theme - adjusted for better text contrast */
+body.cyberpunk-theme {
+  --secondary-color: #e0f0e0; /* Lighter, slightly tinted text */
+}
+
+/* Ocean Theme - adjusted for better text contrast */
+body.ocean-theme {
+  --secondary-color: #e0f7fa; /* Maintain existing good contrast */
+}
+
+/* Forest Theme - adjusted for better text contrast */
+body.forest-theme {
+  --secondary-color: #f1f8e9; /* Maintain existing good contrast */
+}
+
+/* Soft Pink Theme - adjusted for better text contrast */
+body.soft-pink-theme {
+  --secondary-color: #4a3446; /* Maintain existing good contrast */
 }
 
