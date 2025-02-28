@@ -517,31 +517,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// Function to change theme
-const changeTheme = (newTheme: string) => {
-  if (!themes[newTheme as keyof typeof themes]) {
-    console.error(`Theme "${newTheme}" not found`);
-    return;
-  }
-  
-  currentTheme = newTheme;
-  
-  // Update background
-  createGradientBackground(newTheme);
-  
-  // Update wave color
-  scene.remove(wave);
-  const newWave = createWaveMesh(newTheme);
-  scene.add(newWave);
-  Object.assign(wave, newWave);
-  
-  // Update prisms
-  createPrisms(newTheme);
-  
-  // Update light beams
-  createLightBeams(newTheme);
-};
-
 // Add this at the end of your file, before any animation loops
 // Listen for theme changes from the HTML/CSS theme switcher
 document.addEventListener('DOMContentLoaded', () => {
