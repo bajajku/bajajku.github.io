@@ -16,13 +16,107 @@ renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 camera.position.set(0, 0, 20);
 
-// Create a gradient background
-const createGradientBackground = () => {
-  const colors = [
-    new THREE.Color(0x1a2a6c), // Deep blue
-    new THREE.Color(0x003366), // Navy
-    new THREE.Color(0x35478c)  // Indigo blue
-  ];
+// Theme configuration
+const themes = {
+  blue: {
+    background: [
+      new THREE.Color(0x1a2a6c), // Deep blue
+      new THREE.Color(0x003366), // Navy
+      new THREE.Color(0x35478c)  // Indigo blue
+    ],
+    prismColors: [0x3366ff, 0x00aaff, 0x66ccff, 0x0088cc, 0x4477aa],
+    lightColors: [0x3366ff, 0x00aaff, 0x4477aa],
+    waveColor: 0x4fb4ff
+  },
+  purple: {
+    background: [
+      new THREE.Color(0x2e1065), // Deep purple
+      new THREE.Color(0x4c1d95), // Purple
+      new THREE.Color(0x7e22ce)  // Violet
+    ],
+    prismColors: [0x8b5cf6, 0xa78bfa, 0xc4b5fd, 0xddd6fe, 0x7c3aed],
+    lightColors: [0x8b5cf6, 0xa78bfa, 0x7c3aed],
+    waveColor: 0xc4b5fd
+  },
+  green: {
+    background: [
+      new THREE.Color(0x064e3b), // Deep green
+      new THREE.Color(0x065f46), // Emerald
+      new THREE.Color(0x047857)  // Green
+    ],
+    prismColors: [0x10b981, 0x34d399, 0x6ee7b7, 0xa7f3d0, 0x059669],
+    lightColors: [0x10b981, 0x34d399, 0x059669],
+    waveColor: 0x6ee7b7
+  },
+  // Add new themes to match CSS
+  dark: {
+    background: [
+      new THREE.Color(0x0b0b0b), // Dark
+      new THREE.Color(0x1a1a2e), // Dark blue
+      new THREE.Color(0x16213e)  // Navy
+    ],
+    prismColors: [0x00ffff, 0x00ccff, 0x0088cc, 0x3366ff, 0x4477aa],
+    lightColors: [0x00ffff, 0x00ccff, 0x3366ff],
+    waveColor: 0x00ffff
+  },
+  light: {
+    background: [
+      new THREE.Color(0xf5f5f7), // Light
+      new THREE.Color(0xe5e5e7), // Light gray
+      new THREE.Color(0xd5d5d7)  // Gray
+    ],
+    prismColors: [0x0066cc, 0x3399ff, 0x66ccff, 0x99ddff, 0x0088cc],
+    lightColors: [0x0066cc, 0x3399ff, 0x0088cc],
+    waveColor: 0x3399ff
+  },
+  cyberpunk: {
+    background: [
+      new THREE.Color(0x0a0a16), // Dark blue
+      new THREE.Color(0x1a0033), // Deep purple
+      new THREE.Color(0x330066)  // Purple
+    ],
+    prismColors: [0xff00ff, 0xaa00ff, 0xcc00cc, 0xff33ff, 0xdd00dd],
+    lightColors: [0xff00ff, 0xaa00ff, 0xff33ff],
+    waveColor: 0xff00ff
+  },
+  ocean: {
+    background: [
+      new THREE.Color(0x001e3c), // Deep blue
+      new THREE.Color(0x003366), // Navy
+      new THREE.Color(0x004d7a)  // Ocean blue
+    ],
+    prismColors: [0x00bfff, 0x007bb8, 0x0099cc, 0x33ccff, 0x0088cc],
+    lightColors: [0x00bfff, 0x007bb8, 0x33ccff],
+    waveColor: 0x00bfff
+  },
+  forest: {
+    background: [
+      new THREE.Color(0x0a1f0a), // Deep green
+      new THREE.Color(0x1b2e1b), // Forest
+      new THREE.Color(0x2d462d)  // Dark green
+    ],
+    prismColors: [0x4caf50, 0x2e7d32, 0x66bb6a, 0x81c784, 0x388e3c],
+    lightColors: [0x4caf50, 0x2e7d32, 0x388e3c],
+    waveColor: 0x4caf50
+  },
+  "soft-pink": {
+    background: [
+      new THREE.Color(0xfff0f5), // Light pink
+      new THREE.Color(0xffdae5), // Pink
+      new THREE.Color(0xffe4e8)  // Soft pink
+    ],
+    prismColors: [0xff69b4, 0xdb7093, 0xff99cc, 0xffb6c1, 0xffc0cb],
+    lightColors: [0xff69b4, 0xdb7093, 0xff99cc],
+    waveColor: 0xff69b4
+  }
+};
+
+// Default theme
+let currentTheme = 'dark'; // Changed default to match HTML/CSS
+
+// Create a gradient background with theme support
+const createGradientBackground = (theme = currentTheme) => {
+  const colors = themes[theme as keyof typeof themes].background;
   
   const canvasSize = 1024;
   const canvas = document.createElement('canvas');
@@ -43,13 +137,12 @@ const createGradientBackground = () => {
   scene.background = texture;
 };
 
-createGradientBackground();
-
-// Create the flowing wave mesh
-const createWaveMesh = () => {
+// Create the flowing wave mesh with theme support
+const createWaveMesh = (theme = currentTheme) => {
+  const waveColor = themes[theme as keyof typeof themes].waveColor;
   const geometry = new THREE.PlaneGeometry(100, 100, 50, 50);
   const material = new THREE.MeshStandardMaterial({
-    color: 0x4fb4ff,
+    color: waveColor,
     metalness: 0.3,
     roughness: 0.2,
     transparent: true,
@@ -65,7 +158,9 @@ const createWaveMesh = () => {
   return wave;
 };
 
-const wave = createWaveMesh();
+// Initialize with default theme
+createGradientBackground();
+let wave = createWaveMesh();
 scene.add(wave);
 
 // Create floating triangular prisms
@@ -100,23 +195,37 @@ const createPrism = (size: number, color: number, x: number, y: number, z: numbe
   return prism;
 };
 
-// Create a collection of prisms - reduced number for better performance
+// Create a collection of prisms with theme support
 const prisms: THREE.Mesh<THREE.CylinderGeometry, THREE.MeshPhysicalMaterial, THREE.Object3DEventMap>[] = [];
-const prismColors = [0x3366ff, 0x00aaff, 0x66ccff, 0x0088cc, 0x4477aa]; // More professional blue palette
+let prismColors = themes[currentTheme as keyof typeof themes].prismColors;
 
-// Reduced number of prisms for better performance and cleaner look
-for (let i = 0; i < 15; i++) {
-  const size = Math.random() * 1.5 + 0.5;
-  const x = Math.random() * 80 - 40;
-  const y = Math.random() * 40 - 20;
-  const z = Math.random() * 40 - 20;
-  const color = prismColors[Math.floor(Math.random() * prismColors.length)];
-  const rotation = Math.random() * Math.PI;
+// Function to create prisms with current theme colors
+const createPrisms = (theme = currentTheme) => {
+  // Clear existing prisms
+  prisms.forEach(prism => {
+    scene.remove(prism);
+  });
+  prisms.length = 0;
   
-  const prism = createPrism(size, color, x, y, z, rotation);
-  prisms.push(prism);
-  scene.add(prism);
-}
+  // Get colors from the current theme
+  prismColors = themes[theme as keyof typeof themes].prismColors;
+  
+  // Create new prisms
+  for (let i = 0; i < 15; i++) {
+    const size = Math.random() * 1.5 + 0.5;
+    const x = Math.random() * 80 - 40;
+    const y = Math.random() * 40 - 20;
+    const z = Math.random() * 40 - 20;
+    const color = prismColors[Math.floor(Math.random() * prismColors.length)];
+    const rotation = Math.random() * Math.PI;
+    
+    const prism = createPrism(size, color, x, y, z, rotation);
+    prisms.push(prism);
+    scene.add(prism);
+  }
+};
+
+createPrisms();
 
 // Create light beams (spotlight)
 const createLightBeam = (color: THREE.ColorRepresentation | undefined, x: number, y: number, z: number, targetX: number, targetY: number, targetZ: number) => {
@@ -136,22 +245,37 @@ const createLightBeam = (color: THREE.ColorRepresentation | undefined, x: number
   return spotlight;
 };
 
-// Add multiple colored light beams - using more professional colors
+// Light beams with theme support
 const lightBeams: THREE.SpotLight[] = [];
-const lightColors = [0x3366ff, 0x00aaff, 0x4477aa]; // Professional blue tones
 
-for (let i = 0; i < 3; i++) {
-  const x = Math.random() * 30 - 15;
-  const y = 40;
-  const z = Math.random() * 30 - 15;
-  const targetX = x * 0.8;
-  const targetY = -30;
-  const targetZ = z * 0.8;
+// Function to create light beams with current theme colors
+const createLightBeams = (theme = currentTheme) => {
+  // Clear existing light beams
+  lightBeams.forEach(beam => {
+    scene.remove(beam);
+    scene.remove(beam.target);
+  });
+  lightBeams.length = 0;
   
-  const beam = createLightBeam(lightColors[i], x, y, z, targetX, targetY, targetZ);
-  lightBeams.push(beam);
-  scene.add(beam);
-}
+  // Get colors from the current theme
+  const lightColors = themes[theme as keyof typeof themes].lightColors;
+  
+  // Create new light beams
+  for (let i = 0; i < 3; i++) {
+    const x = Math.random() * 30 - 15;
+    const y = 40;
+    const z = Math.random() * 30 - 15;
+    const targetX = x * 0.8;
+    const targetY = -30;
+    const targetZ = z * 0.8;
+    
+    const beam = createLightBeam(lightColors[i], x, y, z, targetX, targetY, targetZ);
+    lightBeams.push(beam);
+    scene.add(beam);
+  }
+};
+
+createLightBeams();
 
 // Add ambient light - slightly brighter for better visibility
 const ambientLight = new THREE.AmbientLight(0x444444);
@@ -391,4 +515,85 @@ document.addEventListener("DOMContentLoaded", () => {
   chatInput.addEventListener("keydown", (e) => {
     if (e.key === "Enter") handleChat();
   });
+});
+
+// Function to change theme
+const changeTheme = (newTheme: string) => {
+  if (!themes[newTheme as keyof typeof themes]) {
+    console.error(`Theme "${newTheme}" not found`);
+    return;
+  }
+  
+  currentTheme = newTheme;
+  
+  // Update background
+  createGradientBackground(newTheme);
+  
+  // Update wave color
+  scene.remove(wave);
+  const newWave = createWaveMesh(newTheme);
+  scene.add(newWave);
+  Object.assign(wave, newWave);
+  
+  // Update prisms
+  createPrisms(newTheme);
+  
+  // Update light beams
+  createLightBeams(newTheme);
+};
+
+// Add this at the end of your file, before any animation loops
+// Listen for theme changes from the HTML/CSS theme switcher
+document.addEventListener('DOMContentLoaded', () => {
+  // Get initial theme from body class
+  const bodyClass = document.body.className;
+  const initialTheme = bodyClass.replace('-theme', '');
+  
+  // Set initial 3D background theme
+  if (themes[initialTheme as keyof typeof themes]) {
+    currentTheme = initialTheme;
+    updateSceneTheme(currentTheme);
+  }
+  // Listen for theme changes
+  const themeOptions = document.querySelectorAll('.theme-option');
+  themeOptions.forEach(option => {
+    option.addEventListener('click', () => {
+      const theme = option.getAttribute('data-theme');
+      if (theme && themes[theme as keyof typeof themes]) {
+        currentTheme = theme;
+        updateSceneTheme(currentTheme);
+      }
+    });
+  });
+  
+  // Function to update all theme-dependent elements in the scene
+  function updateSceneTheme(theme: string) {
+    // Update background
+    createGradientBackground(theme);
+    
+    // Update wave color
+    if (wave) {
+      scene.remove(wave);
+      wave = createWaveMesh(theme); 
+      scene.add(wave);
+    }
+    
+    // Update prism colors if they exist
+    if (prisms) {
+      prisms.forEach((prism, index) => {
+        const prismColors = themes[theme as keyof typeof themes].prismColors;
+        const color = prismColors[index % prismColors.length];
+        (prism.material as THREE.MeshStandardMaterial).color.set(color);
+      });
+    }
+    
+    // Update light colors if they exist
+    if (lightBeams) {
+      lightBeams.forEach((light, index) => {
+        const lightColors = themes[theme as keyof typeof themes].lightColors;
+        const color = lightColors[index % lightColors.length];
+        light.color.set(color);
+      });
+    }
+  }
 });
