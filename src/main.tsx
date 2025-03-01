@@ -444,6 +444,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const chatSend = document.getElementById("chat-send") as HTMLButtonElement;
   const chatBody = document.getElementById("chat-body") as HTMLDivElement;
 
+  // Track if this is the first API call
+  let isFirstApiCall = true;
+  const MAX_RETRIES = 3;
+
   // Function to add a message to the chat
   const addMessage = (message: string, isUser = false) => {
     const messageDiv = document.createElement("div");
@@ -454,7 +458,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   // Function to send POST request and handle response
-  const getBotResponse = async (question: string) => {
+  const getBotResponse = async (question: string, retryCount = 0) => {
     const apiUrl = "https://portfolioagent.onrender.com/chat";
 
     try {
@@ -466,10 +470,10 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="message-content">
           <div class="message-header">
             <span class="agent-name">PORTFOLIO-AI</span>
-            <span class="timestamp">PROCESSING</span>
+            <span class="timestamp">${isFirstApiCall ? "INITIALIZING" : "PROCESSING"}</span>
           </div>
           <p class="thinking-anim">
-            <span>Analyzing query</span>
+            <span>${isFirstApiCall ? "Warming up systems" : "Analyzing query"}</span>
             <span class="thinking-dots">
               <span></span><span></span><span></span>
             </span>
@@ -485,8 +489,16 @@ document.addEventListener("DOMContentLoaded", () => {
       chatBody.appendChild(thinkingMessage);
       chatBody.scrollTop = chatBody.scrollHeight;
 
-      // Send request to API
-      const response = await fetch(apiUrl, {
+      // Set a longer timeout for the first API call
+      const timeoutDuration = isFirstApiCall ? 30000 : 15000; // 30 seconds for first call, 15 for others
+      
+      // Create a timeout promise
+      const timeoutPromise = new Promise((_, reject) => {
+        setTimeout(() => reject(new Error("Request timeout")), timeoutDuration);
+      });
+
+      // Send request to API with timeout
+      const fetchPromise = fetch(apiUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -494,11 +506,17 @@ document.addEventListener("DOMContentLoaded", () => {
         body: JSON.stringify({ question }),
       });
 
+      // Race between the fetch and the timeout
+      const response = await Promise.race([fetchPromise, timeoutPromise]) as Response;
+
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
 
       const data = await response.json();
+      
+      // First successful call completed
+      isFirstApiCall = false;
       
       // Remove thinking message
       thinkingMessage.remove();
@@ -537,7 +555,40 @@ document.addEventListener("DOMContentLoaded", () => {
       const thinkingMsg = document.querySelector(".chat-message.bot:last-child");
       if (thinkingMsg) thinkingMsg.remove();
       
-      // Add error message
+      // For the first API call, implement retry logic
+      if (isFirstApiCall && retryCount < MAX_RETRIES) {
+        const retryMessage = document.createElement("div");
+        retryMessage.classList.add("chat-message", "bot");
+        retryMessage.innerHTML = `
+          <div class="message-connector"></div>
+          <div class="message-content">
+            <div class="message-header">
+              <span class="agent-name">SYSTEM</span>
+              <span class="timestamp">RETRY</span>
+            </div>
+            <p class="chat-color">Initializing AI systems. Retrying in a moment... (${retryCount + 1}/${MAX_RETRIES})</p>
+            <div class="message-footer">
+              <div class="confidence-indicator">
+                <span class="confidence-label">STATUS:</span>
+                <div class="confidence-bar medium"></div>
+              </div>
+            </div>
+          </div>
+        `;
+        
+        chatBody.appendChild(retryMessage);
+        chatBody.scrollTop = chatBody.scrollHeight;
+        
+        // Wait and retry
+        setTimeout(() => {
+          retryMessage.remove();
+          getBotResponse(question, retryCount + 1);
+        }, 5000); // Wait 5 seconds before retrying
+        
+        return;
+      }
+      
+      // Add error message if retries exhausted or not first call
       const errorMessage = document.createElement("div");
       errorMessage.classList.add("chat-message", "bot");
       errorMessage.innerHTML = `
@@ -547,7 +598,9 @@ document.addEventListener("DOMContentLoaded", () => {
             <span class="agent-name">SYSTEM</span>
             <span class="timestamp">ERROR</span>
           </div>
-          <p class="chat-color">Neural connection interrupted. Unable to process request. Please try again.</p>
+          <p class="chat-color">${isFirstApiCall ? 
+            "AI systems are still initializing. Please try again in a minute." : 
+            "Neural connection interrupted. Unable to process request. Please try again."}</p>
           <div class="message-footer">
             <div class="confidence-indicator">
               <span class="confidence-label">STATUS:</span>
