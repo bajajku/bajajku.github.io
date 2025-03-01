@@ -455,7 +455,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Function to send POST request and handle response
   const getBotResponse = async (question: string) => {
-    const apiUrl = "https://portfolio-chatbot-q6cb.onrender.com/recommendation";
+    const apiUrl = "https://portfolioagent.onrender.com/chat";
 
     try {
       // Create thinking message with advanced animation
@@ -517,7 +517,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <span class="agent-name">PORTFOLIO-AI</span>
             <span class="timestamp">${timestamp}</span>
           </div>
-          <p class="chat-color">${data.result || "Analysis incomplete. Please rephrase your query."}</p>
+          <p class="chat-color">${data.answer || "Analysis incomplete. Please rephrase your query."}</p>
           <div class="message-footer">
             <div class="confidence-indicator">
               <span class="confidence-label">CONFIDENCE:</span>
