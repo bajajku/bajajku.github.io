@@ -49,11 +49,14 @@
     <div class="nav-container">
       <ul id="primary-navigation" data-visible="false">
         <li><a href="#home">Home</a></li>
+        <li><a href="#education">Education</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#skills">Skills</a></li>
+        <li><a href="#open-source">Open Source</a></li>
+        <li><a href="#leadership">Leadership</a></li>
         <li><a href="#accomplishments">Accomplishments</a></li>
-        <li><a href="#contact">contact</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
 
     </div>
@@ -100,7 +103,12 @@
     <header id="home" class="hero">
       <div class="hero-content">
         <h1 data-text="Hi I'm Kunal Bajaj">Hi I'm Kunal Bajaj</h1>
-        <p class="subtitle">🚀 "Crafting innovative tech solutions with creativity, precision, and passion."</p>
+        <p class="subtitle">🚀 "Crafting innovative AI solutions with creativity, precision, and passion."</p>
+        <div class="contact-quick-info">
+          <span>📞 437-269-7678</span>
+          <span>📧 kunalbajaj20220@gmail.com</span>
+          <span>🎓 Sheridan College</span>
+        </div>
       </div>
     </header>
     <section>
@@ -179,96 +187,121 @@
         </div>
       </div>
     </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section">
+      <h2>🎓 Education</h2>
+      <div class="education-container">
+        <div class="education-card">
+          <div class="institution-info">
+            <h3>Honours Bachelor of Computer Science</h3>
+            <h4>Mobile Computing Specialization</h4>
+            <p class="institution">Sheridan College</p>
+            <p class="location">Oakville, ON</p>
+            <p class="date-range">September 2022 – December 2026</p>
+          </div>
+          <div class="education-highlights">
+            <div class="highlight-item">
+              <span class="highlight-icon">🏆</span>
+              <span>Generator Student Award for Innovation in Research</span>
+            </div>
+            <div class="highlight-item">
+              <span class="highlight-icon">💡</span>
+              <span>Applied AI Research & Development</span>
+            </div>
+            <div class="highlight-item">
+              <span class="highlight-icon">👥</span>
+              <span>Peer Mentorship Leadership</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Work Experience Section -->
   <section id="experience" class="section">
     <h2>💼 Work Experience</h2>
     <div class="experience-container">
-      <!-- Card 1 -->
-      <div class="experience-card">
-        <h3>Software Developer</h3>
-        <p>Korah Limited</p>
-        <p class="location">Remote</p>
-        <p class="date-range">January 2025 - Present</p>
-        <ul>
-          <li>Continuing development of FindMyBed🏥 Project, focusing on feature enhancement, performance optimization, and user experience improvements.</li>
-          <li>Utilizing algorithms like Grid search for hyperparameter tuning.</li>
-        </ul>
-        <div class="tech-stack">
-          <span>Python</span>
-          <span>FastAPI</span>
-          <span>Pytest</span>
-          <span>Scipy</span>
-          <span>Matplotlib</span>
-          <span>Pandas</span>
-          <span>NumPy</span>
-        </div>
-      </div>
-
-      <div class="experience-card">
-        <h3>AI and Process Optimization Analyst</h3>
-        <p>Korah Limited</p>
+      <!-- Card 1 - Latest Role -->
+      <div class="experience-card featured-role">
+        <h3>AI Engineer Intern</h3>
+        <p>Sheridan College (Centre for Applied AI)</p>
         <p class="location">Oakville, ON</p>
-        <p class="date-range">September 2024 - December 2024</p>
+        <p class="date-range">May 2025 – Present</p>
         <ul>
-          <li>Developed and implemented State Machine-based AI algorithms in Python, processing 700+ yearly NICU bed predictions with 90% accuracy, reducing decision time by 35%.</li>
-          <li>Built responsive frontend simulation using Python's Pygame library to visualize patient transfers, improving operational tracking by 40%.</li>
-          <li>Facilitated 15+ requirement gathering sessions with healthcare professionals, achieving 95% stakeholder satisfaction and implementing 25+ critical system improvements based on operational feedback.</li>
+          <li>Built full-stack RAG chatbot for military healthcare using LangGraph, FastAPI, and Next.js/React, processing 500+ documents with 90%+ retrieval accuracy.</li>
+          <li>Engineered AI safety pipeline with Guardrails and custom evaluation framework, implementing 10+ safety benchmarks for trauma-informed content filtering.</li>
         </ul>
         <div class="tech-stack">
-          <span>Python</span>
-          <span>PyGame</span>
-          <span>Agile</span>
+          <span>LangGraph</span>
           <span>FastAPI</span>
-          <span>Pytest</span>
-          <span>Scipy</span>
-          <span>Matplotlib</span>
-          <span>Pandas</span>
-          <span>NumPy</span>
+          <span>Next.js</span>
+          <span>React</span>
+          <span>Guardrails</span>
+          <span>Python</span>
+          <span>RAG</span>
         </div>
       </div>
 
       <!-- Card 2 -->
       <div class="experience-card">
-        <h3>AI Research Assistant</h3>
-        <p>Sheridan Centre for Applied AI (CAAI)</p>
-        <p class="location">Oakville, ON</p>
-        <p class="date-range">October 2023 - September 2024</p>
+        <h3>AI and Process Optimization Analyst</h3>
+        <p>Korah Limited</p>
+        <p class="location">Markham, ON</p>
+        <p class="date-range">September 2024 – April 2025</p>
         <ul>
-          <li>Implemented advanced NLP algorithms using Transformers and LangChain, developing a chatbot that processed 1000+ monthly queries with 90% accuracy and reduced response time by 45%.</li>
-          <li>Engineered a Retrieval-Augmented Generation (RAG) system using FastAPI backend, handling 150+ concurrent requests and improving query resolution speed by 80% while maintaining 99.9% uptime.</li>
-          <li>Engineered dynamic and context-aware prompts, leveraging few-shot learning, instruction tuning, and chain-of-thought prompting to improve response relevance and coherence by 20%, eliminating the need for model retraining.</li>
+          <li>Developed predictive models using Python state machine algorithms, forecasting 700+ NICU bed allocations with 90% accuracy.</li>
+          <li>Engineered real-time analytics pipeline with data visualization and ETL processes, improving operational efficiency by 40%.</li>
         </ul>
         <div class="tech-stack">
           <span>Python</span>
-          <span>FastAPI</span>
-          <span>Langchain</span>
-          <span>Transformers</span>
-          <span>HuggingFace</span>
-          <span>Docker</span>
-          <span>PyTorch</span>
+          <span>State Machines</span>
+          <span>Data Analytics</span>
+          <span>ETL</span>
+          <span>Predictive Modeling</span>
+          <span>Data Visualization</span>
         </div>
       </div>
 
       <!-- Card 3 -->
       <div class="experience-card">
-        <h3>Software Developer</h3>
-        <p>Sheridan Centre for Applied AI (CAAI)</p>
+        <h3>AI Research Assistant</h3>
+        <p>Sheridan College (Centre for Applied AI)</p>
         <p class="location">Oakville, ON</p>
-        <p class="date-range">May 2024 - August 2024</p>
+        <p class="date-range">October 2023 – September 2024</p>
         <ul>
-          <li>Engineered a communication layer for wearable sensors using Arduino IDE and C++ for ESP32 hardware and Node.js for backend integration, improving data transfer speed by 20%.</li>
-          <li>Designed and optimized a MongoDB database hosted on AWS Cloud for real-time analytics, increasing query efficiency by 25%.</li>
-          <li>Developed a responsive ReactJS frontend dashboard, processing real-time data from 50+ sensors simultaneously with 99% uptime and reducing system monitoring time by 30%.</li>
+          <li>Built NLP chatbot for Oakville Public Library using Transformers and LangChain, processing 1K+ monthly queries with 90% accuracy.</li>
+          <li>Developed RAG system with FastAPI, handling 150+ concurrent users and achieving 99.9% uptime.</li>
         </ul>
         <div class="tech-stack">
-          <span>JavaScript</span>
+          <span>Python</span>
+          <span>FastAPI</span>
+          <span>LangChain</span>
+          <span>Transformers</span>
+          <span>HuggingFace</span>
+          <span>RAG</span>
+          <span>NLP</span>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="experience-card">
+        <h3>Software Developer</h3>
+        <p>Sheridan College (Centre for Applied AI)</p>
+        <p class="location">Oakville, ON</p>
+        <p class="date-range">May 2024 – August 2024</p>
+        <ul>
+          <li>Built communication layer for ESP32 sensors using C++ and Node.js, improving data transmission speed by 20%.</li>
+          <li>Developed responsive ReactJS frontend dashboard, processing real-time data from 50+ sensors with 99% uptime.</li>
+        </ul>
+        <div class="tech-stack">
           <span>C++</span>
-          <span>Arduino</span>
-          <span>Node-RED</span>
-          <span>React</span>
           <span>Node.js</span>
+          <span>React</span>
+          <span>ESP32</span>
           <span>MongoDB</span>
           <span>AWS</span>
+          <span>IoT</span>
         </div>
       </div>
     </div>
@@ -277,6 +310,48 @@
 <!-- Projects Section -->
 <section id="projects" class="section">
   <h2>👨‍💻 Projects</h2>
+  
+  <!-- Featured Project - SynthLabel -->
+  <div class="experience-card featured-project">
+    <h3>SynthLabel – AI Image Labeling Platform</h3>
+    <span class="link-indicator">🌐</span>
+    <ul>
+      <li>Built end-to-end AI image labeling platform with Next.js, Solana blockchain, and FAL.ai, enabling custom model training and AWS S3 file management.</li>
+      <li>Integrated blockchain technology for secure and transparent data transactions and model ownership verification.</li>
+      <li>Implemented advanced AI image analysis capabilities for automated labeling and custom model training workflows.</li>
+    </ul>
+    <div class="tech-stack">
+      <span>Next.js</span>
+      <span>Node.js</span>
+      <span>Solana</span>
+      <span>AWS S3</span>
+      <span>FAL.ai</span>
+      <span>Blockchain</span>
+      <span>AI/ML</span>
+    </div>
+  </div>
+
+  <a href="https://github.com/bajajku/Groovify" class="card-link" style="text-decoration: none; position: relative;">
+    <div class="experience-card">
+      <h3>Groovify - iOS App</h3>
+      <span class="link-indicator">🔗</span>
+      <ul>
+        <li>Built an iOS music recommendation app using Swift and SwiftUI, integrating Spotify's API and HuggingFace emotion detection model to analyze user listening patterns and generate mood-based recommendations with 95% accuracy.</li>
+        <li>Implemented Firebase authentication and CoreData for efficient local storage, reducing API calls by 30%.</li>
+        <li>Developed intelligent recommendation engine using machine learning algorithms for personalized music discovery.</li>
+      </ul>
+      <div class="tech-stack">
+        <span>Swift</span>
+        <span>SwiftUI</span>
+        <span>Firebase</span>
+        <span>LLM</span>
+        <span>HuggingFace</span>
+        <span>CoreData</span>
+        <span>Spotify API</span>
+      </div>
+    </div>
+  </a>
+
   <a href="https://github.com/bajajku/VercelClone" class="card-link" style="text-decoration: none; position: relative;">
       <div class="experience-card">
         <h3>Vercel Clone - Fullstack Application</h3>
@@ -293,26 +368,6 @@
           <span>AWS</span>
           <span>Redis</span>
           <span>Jest</span>
-        </div>
-      </div>
-    </a>
-
-    <a href="https://github.com/bajajku/Groovify" class="card-link" style="text-decoration: none; position: relative;">
-      <div class="experience-card">
-        <h3>Groovify - iOS Application</h3>
-        <span class="link-indicator">🔗</span>
-        <ul>
-          <li>Built an iOS music recommendation app using Swift and SwiftUI, integrating Spotify's API to analyze user listening patterns and generate mood-based recommendations with 85% accuracy.</li>
-          <li>Implemented Firebase authentication for secure user login and efficient local storage using CoreData for song metadata, reducing API calls by 30%.</li>
-          <li>Developed an AI-powered recommendation engine using open-source emotion detection model from HuggingFace, maintaining 95% recommendation accuracy.</li>
-        </ul>
-        <div class="tech-stack">
-          <span>Swift</span>
-          <span>SwiftUI</span>
-          <span>Firebase</span>
-          <span>CoreData</span>
-          <span>HuggingFace</span>
-          <span>REST API</span>
         </div>
       </div>
     </a>
@@ -370,61 +425,122 @@
         <div class="experience-card">
           <h3>Languages</h3>
           <div class="tech-stack">
-            <span>Swift</span>
-            <span>Kotlin</span>
-            <span>Java</span>
             <span>Python</span>
-            <span>Dart</span>
-            <span>C/C++</span>
-            <span>C#.NET</span>
-            <span>SQL</span>
             <span>JavaScript</span>
+            <span>TypeScript</span>
+            <span>Go</span>
+            <span>Swift</span>
+            <span>C++</span>
+            <span>SQL</span>
           </div>
         </div>
         <div class="experience-card">
           <h3>Frameworks & Libraries</h3>
           <div class="tech-stack">
-            <span>UIKit</span>
-            <span>SwiftUI</span>
-            <span>CloudKit</span>
-            <span>MapKit</span>
-            <span>CoreLocation</span>
-            <span>React</span>
+            <span>React.js</span>
             <span>Node.js</span>
-            <span>Flutter</span>
-            <span>Langchain</span>
             <span>FastAPI</span>
+            <span>Docker</span>
+            <span>SwiftUI</span>
+            <span>LangChain</span>
+            <span>LangGraph</span>
+            <span>Next.js</span>
             <span>PyTorch</span>
-            <span>SpringBoot</span>
-            <span>Sci-Kit Learn</span>
             <span>Transformers</span>
           </div>
         </div>
         <div class="experience-card">
-          <h3>Tools & Practices</h3>
+          <h3>Developer Tools</h3>
           <div class="tech-stack">
             <span>Git</span>
-            <span>Docker</span>
-            <span>AWS</span>
-            <span>VS Code</span>
-            <span>CI/CD</span>
-            <span>XCode</span>
+            <span>GitHub/GitLab</span>
+            <span>Postman</span>
+            <span>AWS (EC2, S3)</span>
             <span>Firebase</span>
-            <span>MS Office tools</span>
-            <span>Agile (Scrum, Kanban)</span>
-            <span>Test-Driven Development</span>
-            <span>UML</span>
+            <span>TurboRepo</span>
+            <span>VS Code</span>
+            <span>XCode</span>
           </div>
         </div>
         <div class="experience-card">
           <h3>Databases</h3>
           <div class="tech-stack">
-            <span>PostgreSQL</span>
             <span>MongoDB</span>
-            <span>Cassandra</span>
+            <span>PostgreSQL</span>
             <span>SQL Server</span>
-            <span>Realm</span>
+            <span>Milvus</span>
+            <span>Redis</span>
             <span>CoreData</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Open Source Contributions Section -->
+    <section id="open-source" class="section">
+      <h2>🌟 Open Source Contributions</h2>
+      <div class="experience-container">
+        <div class="experience-card open-source-card">
+          <h3>LangChain Ecosystem</h3>
+          <div class="contribution-stats">
+            <span class="stat-badge">100K+ ⭐ GitHub Stars</span>
+            <span class="stat-badge">20M+ Monthly Downloads</span>
+          </div>
+          <ul>
+            <li>Active contributor to repositories with 100K+ GitHub stars and 20M+ monthly downloads.</li>
+            <li>Implemented PyArrow serialization for pandas DataFrames, reducing memory usage by 40%.</li>
+            <li>Contributing to AI/ML infrastructure used by major companies worldwide.</li>
+          </ul>
+          <div class="tech-stack">
+            <span>Python</span>
+            <span>TypeScript</span>
+            <span>LangChain</span>
+            <span>AI/ML</span>
+            <span>Open Source</span>
+          </div>
+        </div>
+
+        <div class="experience-card open-source-card">
+          <h3>Streamlit Framework</h3>
+          <div class="contribution-stats">
+            <span class="stat-badge">500K+ Data Scientists</span>
+            <span class="stat-badge">Uber • Snowflake • Meta</span>
+          </div>
+          <ul>
+            <li>Active contributor to framework used by 500K+ data scientists at Uber, Snowflake, and Meta.</li>
+            <li>Fixed error handling and developing new dropdown widget to improve user experience.</li>
+            <li>Enhancing data visualization capabilities for the global data science community.</li>
+          </ul>
+          <div class="tech-stack">
+            <span>Python</span>
+            <span>TypeScript</span>
+            <span>Streamlit</span>
+            <span>Data Science</span>
+            <span>UI/UX</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Leadership Section -->
+    <section id="leadership" class="section">
+      <h2>👥 Leadership & Mentorship</h2>
+      <div class="experience-container">
+        <div class="experience-card leadership-card">
+          <h3>Peer Mentor</h3>
+          <p>Sheridan College</p>
+          <p class="location">Oakville, ON</p>
+          <p class="date-range">January 2024 – April 2024</p>
+          <ul>
+            <li>Supported first-year students in navigating college resources and adjusting to campus life.</li>
+            <li>Provided academic guidance and mentorship to help students develop effective study strategies.</li>
+            <li>Facilitated workshops and peer support sessions to build community and foster collaboration.</li>
+          </ul>
+          <div class="leadership-qualities">
+            <span class="quality-badge">🎯 Mentorship</span>
+            <span class="quality-badge">🤝 Community Building</span>
+            <span class="quality-badge">📚 Academic Support</span>
+            <span class="quality-badge">💬 Communication</span>
           </div>
         </div>
       </div>

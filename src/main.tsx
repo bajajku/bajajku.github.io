@@ -384,6 +384,7 @@ function moveCamera() {
   
   // Very subtle camera rotation
   camera.rotation.y = t * -0.00001;
+  camera.rotation.x = t * -0.00001;
   
   // Create parallax effect by moving different elements at different speeds
   prisms.forEach((prism, index) => {
