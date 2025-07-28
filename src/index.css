@@ -1848,16 +1848,16 @@ section li {
 /* Theme Selector Styles */
 .theme-switcher {
   position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 999; /* Lower than nav elements */
+  top: 25px;
+  right: 25px;
+  z-index: 1001;
 }
 
 @media (max-width: 768px) {
   .theme-switcher {
     top: auto;
-    bottom: 20px; /* Move to bottom on mobile */
-    right: 20px;
+    bottom: 25px;
+    right: 25px;
   }
 }
 
