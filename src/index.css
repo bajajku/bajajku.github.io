@@ -1850,7 +1850,15 @@ section li {
   position: fixed;
   top: 20px;
   right: 20px;
-  z-index: 1001;
+  z-index: 999; /* Lower than nav elements */
+}
+
+@media (max-width: 768px) {
+  .theme-switcher {
+    top: auto;
+    bottom: 20px; /* Move to bottom on mobile */
+    right: 20px;
+  }
 }
 
 .theme-button {
