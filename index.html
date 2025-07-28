@@ -47,7 +47,20 @@
   <!-- Navigation Bar -->
   <nav aria-label="Main Navigation">
     <div class="nav-container">
-      <ul id="primary-navigation" data-visible="false">
+      <!-- Brand/Logo -->
+      <div class="nav-brand">
+        <a href="#home">KB</a>
+      </div>
+      
+      <!-- Mobile Menu Toggle -->
+      <button class="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+      
+      <!-- Navigation Menu -->
+      <ul id="primary-navigation" class="nav-menu" data-visible="false">
         <li><a href="#home">Home</a></li>
         <li><a href="#education">Education</a></li>
         <li><a href="#experience">Experience</a></li>
@@ -58,7 +71,6 @@
         <li><a href="#accomplishments">Accomplishments</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-
     </div>
   </nav>
 

@@ -420,23 +420,80 @@ window.addEventListener('resize', throttle(onWindowResize, 100));
 // Initialize animation
 animate();
 
-// Navigation toggle code (kept from original)
+// Enhanced Navigation toggle with smooth animations
 const navToggle = document.querySelector(".mobile-nav-toggle");
 const navMenu = document.querySelector("#primary-navigation");
+const navLinks = document.querySelectorAll("#primary-navigation a");
 
+// Function to close the menu
+const closeMenu = () => {
+  if (navMenu && navToggle) {
+    navMenu.setAttribute("data-visible", "false");
+    navToggle.setAttribute("aria-expanded", "false");
+  }
+};
+
+// Function to open the menu
+const openMenu = () => {
+  if (navMenu && navToggle) {
+    navMenu.setAttribute("data-visible", "true");
+    navToggle.setAttribute("aria-expanded", "true");
+  }
+};
+
+// Toggle menu on hamburger click
 if (navToggle) {
     navToggle.addEventListener("click", () => {
         if (navMenu) {
             const visible = navMenu.getAttribute("data-visible");
             if (visible === "false") {
-                navMenu.setAttribute("data-visible", "true");
-                navToggle.setAttribute("aria-expanded", "true");
+                openMenu();
             } else {
-                navMenu.setAttribute("data-visible", "false");
-                navToggle.setAttribute("aria-expanded", "false");
+                closeMenu();
             }
         }
     });
+}
+
+// Close menu when clicking on navigation links
+navLinks.forEach(link => {
+    link.addEventListener("click", () => {
+        closeMenu();
+    });
+});
+
+// Close menu when clicking outside (on the overlay)
+document.addEventListener("click", (e) => {
+    const isClickInside = navMenu?.contains(e.target as Node) || navToggle?.contains(e.target as Node);
+    if (!isClickInside && navMenu?.getAttribute("data-visible") === "true") {
+        closeMenu();
+    }
+});
+
+// Close menu on escape key
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && navMenu?.getAttribute("data-visible") === "true") {
+        closeMenu();
+    }
+});
+
+// Prevent body scroll when menu is open
+const body = document.body;
+const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'data-visible') {
+            const target = mutation.target as HTMLElement;
+            if (target.getAttribute('data-visible') === 'true') {
+                body.style.overflow = 'hidden';
+            } else {
+                body.style.overflow = '';
+            }
+        }
+    });
+});
+
+if (navMenu) {
+    observer.observe(navMenu, { attributes: true });
 }
 
 // Chat functionality (kept from original)
